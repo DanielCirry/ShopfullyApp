@@ -1,6 +1,6 @@
 import React from "react";
-import NotFound from "../Pages/NotFound";
-import Flyers from "../Pages/Flyers";
+import NotFound from "../components/Pages/NotFound";
+import Flyers from "../components/Pages/Flyers";
 
 const flyers: React.FC = () => {
   return <Flyers />;
