@@ -1,9 +1,5 @@
 import React, { useState } from "react";
-
 import { NavLink, withRouter } from "react-router-dom";
-import Routes from "../routers/Routes";
-
-import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import {
   AppBar,
   Toolbar,
@@ -16,70 +12,73 @@ import {
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import styled from "styled-components";
+import Routes from "../routers/Routes";
 
-const NavigationBar: React.FC = (props: any) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const toggleDrawer = (open: boolean) => (
+class NavigationBar extends React.Component<any, any> {
+  state = { open: false };
+  toggleDrawer = (open: boolean) => (
     event: React.KeyboardEvent | React.MouseEvent
   ) => {
     if (
       event.type === "keydown" &&
       ((event as React.KeyboardEvent).key === "Tab" ||
         (event as React.KeyboardEvent).key === "Shift")
-    ) {
+    )
       return;
-    }
 
-    setIsOpen(open);
+    this.setState({ open: open });
   };
 
-  const activeRoute = (routeName: any) => {
-    return props.location.pathname === routeName ? true : false;
+  activeRoute = (routeName: any) => {
+    return this.props.location.pathname === routeName ? true : false;
   };
 
-  return (
-    <div>
-      <Container>
-        <AppBar position="static">
-          <Toolbar>
-            <IconButton
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              onClick={toggleDrawer(true)}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography>ShopFully</Typography>
-          </Toolbar>
-        </AppBar>
-      </Container>
-      <MenuDrawer open={isOpen} onClose={toggleDrawer(false)}>
-        <ListContainer
-          role="presentation"
-          onClick={toggleDrawer(false)}
-          onKeyDown={toggleDrawer(false)}
-        >
-          <MenuList>
-            {Routes.map((prop, key) => {
-              return (
-                <NavLink
-                  to={prop.path}
-                  style={{ textDecoration: "none" }}
-                  key={key}
-                >
-                  <MenuItem selected={activeRoute(prop.path)}>
-                    <ListItemText primary={prop.sidebarName} />
-                  </MenuItem>
-                </NavLink>
-              );
-            })}
-          </MenuList>
-        </ListContainer>
-      </MenuDrawer>
-    </div>
-  );
-};
+  render() {
+    const { open } = this.state;
+    return (
+      <div>
+        <Container>
+          <AppBar position="static">
+            <Toolbar>
+              <IconButton
+                edge="start"
+                color="inherit"
+                aria-label="menu"
+                onClick={this.toggleDrawer(true)}
+              >
+                <MenuIcon />
+              </IconButton>
+              <Typography>ShopFully</Typography>
+            </Toolbar>
+          </AppBar>
+        </Container>
+        <MenuDrawer open={open} onClose={this.toggleDrawer(false)}>
+          <ListContainer
+            role="presentation"
+            onClick={this.toggleDrawer(false)}
+            onKeyDown={this.toggleDrawer(false)}
+          >
+            <MenuList>
+              {Routes.map((prop, key) => {
+                return (
+                  <NavLink
+                    to={prop.path}
+                    style={{ textDecoration: "none" }}
+                    key={key}
+                  >
+                    <MenuItem selected={this.activeRoute(prop.path)}>
+                      <ListItemText primary={prop.sidebarName} />
+                    </MenuItem>
+                  </NavLink>
+                );
+              })}
+            </MenuList>
+          </ListContainer>
+        </MenuDrawer>
+      </div>
+    );
+  }
+}
 
 export default withRouter(NavigationBar);
 
