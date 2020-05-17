@@ -1,35 +1,66 @@
 import React from "react";
-import NotFound from "../components/Pages/NotFound";
-import Flyers from "../components/Pages/Flyers";
+import NotFound from "../Pages/NotFoundPage";
+import FlyersPage from "../Pages/FlyersPage";
+import { IError } from "../types/general";
+import { IGetFlyersResponse } from "../store/flyers/types";
+import { Dispatch } from "redux";
+import * as asyncActions from "../store/flyers/asyncAction";
+import { IRootState } from "../store";
+import { FlyersActions } from "../store/flyers/types";
 
-const flyers: React.FC = () => {
-  return <Flyers />;
-};
+interface IProps {
+  flyersData: IGetFlyersResponse | null;
+  loading: boolean;
+  error: IError | null;
+  getFlyersData: () => void;
+}
 
-const Standings: React.FC = () => {
-  return <h1>Favourites</h1>;
-};
+class HomePath extends React.Component<IProps, any> {
+  render() {
+    return <FlyersPage {...this.props} />;
+  }
+}
 
-const notFound: React.FC = () => {
-  return <NotFound />;
-};
+class FavouritesPath extends React.Component<any, any> {
+  render() {
+    return <h1>Favourites</h1>;
+  }
+}
+class NotFoundPath extends React.Component<any, any> {
+  render() {
+    return <NotFound />;
+  }
+}
 
 const Routes = [
   {
     path: "/",
     sidebarName: "Home",
-    component: flyers,
+    component: HomePath,
   },
   {
     path: "/favourites",
     sidebarName: "Favourites",
-    component: Standings,
+    component: FavouritesPath,
   },
   {
     path: "/notfound",
     sidebarName: "Not Found",
-    component: notFound,
+    component: NotFoundPath,
   },
 ];
+
+const mapStateToProps = ({ flyers }: IRootState) => ({
+  flyersData: flyers.flyersData,
+  loading: flyers.flyersDataLoading,
+  error: flyers.flyersDataError,
+});
+
+const mapDispatcherToProps = (dispatch: Dispatch<FlyersActions>) => ({
+  getFlyersData: () => asyncActions.getFlyersData(dispatch),
+});
+
+type ReduxType = ReturnType<typeof mapStateToProps> &
+  ReturnType<typeof mapDispatcherToProps>;
 
 export default Routes;
