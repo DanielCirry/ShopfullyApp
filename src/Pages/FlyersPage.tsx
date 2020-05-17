@@ -48,8 +48,8 @@ export default connect(mapStateToProps, mapDispatcherToProps)(FlyersPage);
 
 const Container = styled.div`
   position: relative;
-  width: calc(100vw - 2px);
-  height: calc(100vh - 64px);
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   flex-grow: 1;
