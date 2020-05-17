@@ -31,11 +31,6 @@ const Routes = [
     sidebarName: "Favourites",
     component: FavouritesPath,
   },
-  {
-    path: "/notfound",
-    sidebarName: "Not Found",
-    component: NotFoundPath,
-  },
 ];
 
 export default Routes;

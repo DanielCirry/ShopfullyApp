@@ -3,6 +3,7 @@ import { Router, Switch, Route, Redirect } from "react-router-dom";
 import { createBrowserHistory as createHistory } from "history";
 import Routes from "./Routes";
 import NavigationBar from "../components/NavigationBar";
+import NotFound from "../Pages/NotFoundPage";
 
 const history = createHistory();
 
@@ -18,8 +19,7 @@ export default class AppRouter extends React.Component {
                 <route.component />
               </Route>
             ))}
-            {/* <Route exact path="/" component={Flyers} />
-            <Route path="/notfound" component={NotFound} /> */}
+            <Route path="/notfound" component={NotFound} />
             <Redirect to={"/notfound"} />
           </Switch>
         </Router>

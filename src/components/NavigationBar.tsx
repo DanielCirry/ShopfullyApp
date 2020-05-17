@@ -85,6 +85,7 @@ export default withRouter(NavigationBar);
 const Container = styled.div`
   display: flex;
   flex-grow: 1;
+  margin-bottom: 15px;
 `;
 const MenuDrawer = styled(Drawer)`
   .MuiDrawer-paper {
