@@ -15,6 +15,7 @@ const Flyer = (props: any) => {
         <FLyerCard>
           <CardMediaContent
             image={`https://picsum.photos/${
+              // doing this just to have different sizes pictures
               100 + props.id < 10 ? props.id + 100 : props.id + 0
             }/${props.id < 8 ? props.id + 20 : props.id + 0}`}
             title={props.retailer}
