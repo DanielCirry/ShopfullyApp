@@ -38,7 +38,7 @@ export default class GridComponent extends React.Component<IProps, any> {
             </Grid>
           </div>
         ) : (
-          "No courses found"
+          "No flyers found"
         )}
       </div>
     );
