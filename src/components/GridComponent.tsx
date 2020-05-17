@@ -1,10 +1,9 @@
-import React, { Dispatch } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import Grid from "@material-ui/core/Grid";
 import Flyer from "./Flyer";
-import { FlyersActions, IBasicFlyers } from "../store/flyers/types";
+import { IBasicFlyers } from "../store/flyers/types";
 import { IError } from "../types/general";
-import * as asyncActions from "../store/flyers/asyncAction";
 import { IRootState } from "../store";
 import styled from "styled-components";
 
@@ -25,13 +24,13 @@ class GridComponent extends React.Component<IProps, any> {
     return (
       <div>
         {flyersData ? (
-          <div>
-            <GridContainer container style={{ padding: 24 }}>
-              <GridContainer item xs={12} sm={6} lg={4} xl={3}>
-                <Flyer {...this.props} />
-              </GridContainer>
-            </GridContainer>
-          </div>
+          <GridContainer container spacing={10} style={{ padding: 2 }}>
+            {this.props.flyersData.map((flyer) => (
+              <Grid item xs={12} sm={8} lg={2} xl={1}>
+                <Flyer {...flyer} />
+              </Grid>
+            ))}
+          </GridContainer>
         ) : (
           "No flyers found"
         )}
@@ -46,16 +45,15 @@ const mapStateToProps = ({ flyers }: IRootState) => ({
   error: flyers.flyersDataError,
 });
 
-// const mapDispatcherToProps = (dispatch: Dispatch<FlyersActions>) => ({
-//   getFlyersData: () => asyncActions.getFlyersData(dispatch),
-// });
-
 type ReduxType = ReturnType<typeof mapStateToProps>;
 
 export default connect(mapStateToProps, undefined)(GridComponent);
 
 const GridContainer = styled(Grid)`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   height: 100%;
   width: 100%;
-  background-color: #a1a;
 `;

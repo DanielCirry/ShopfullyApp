@@ -21,8 +21,9 @@ class NotFoundPath extends React.Component<any, any> {
 
 const Routes = [
   {
-    path: "/",
+    path: "/api/flyers",
     sidebarName: "Home",
+
     component: HomePath,
   },
   {

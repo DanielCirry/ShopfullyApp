@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { NavLink, withRouter } from "react-router-dom";
 import {
   AppBar,
@@ -85,6 +85,7 @@ export default withRouter(NavigationBar);
 const Container = styled.div`
   display: flex;
   flex-grow: 1;
+  width: 1550%;
 `;
 const MenuDrawer = styled(Drawer)`
   .MuiDrawer-paper {
