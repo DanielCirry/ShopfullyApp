@@ -1,16 +1,8 @@
 import React from "react";
-import { Dispatch } from "redux";
 import Grid from "@material-ui/core/Grid";
-import TextField from "@material-ui/core/TextField";
 import Flyer from "./Flyer";
-import {
-  FlyersActions,
-  IGetFlyersResponse,
-  IBasicFlyers,
-} from "../store/flyers/types";
-import * as asyncActions from "../store/flyers/asyncAction";
+import { IGetFlyersResponse } from "../store/flyers/types";
 import { IError } from "../types/general";
-import { IRootState } from "../store";
 
 interface IProps {
   flyersData: IGetFlyersResponse | null;
