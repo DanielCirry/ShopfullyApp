@@ -59,7 +59,7 @@ class NavigationBar extends React.Component<any, any> {
             onKeyDown={this.toggleDrawer(false)}
           >
             <MenuList>
-              {Routes.map((prop, key) => {
+              {Routes.map((prop: any, key: any) => {
                 return (
                   <NavLink
                     to={prop.path}

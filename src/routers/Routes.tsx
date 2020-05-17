@@ -1,16 +1,9 @@
 import React from "react";
 import NotFound from "../Pages/NotFoundPage";
 import FlyersPage from "../Pages/FlyersPage";
-import { IError } from "../types/general";
-import { IGetFlyersResponse } from "../store/flyers/types";
-import { Dispatch } from "redux";
-import * as asyncActions from "../store/flyers/asyncAction";
-import { IRootState } from "../store";
-import { FlyersActions } from "../store/flyers/types";
 
 class HomePath extends React.Component<any, any> {
   render() {
-    console.log(this.props);
     return <FlyersPage />;
   }
 }
@@ -44,8 +37,4 @@ const Routes = [
   },
 ];
 
-const mapStateToProps = ({ flyers }: IRootState) => ({
-  flyersData: flyers.flyersData,
-  loading: flyers.flyersDataLoading,
-  error: flyers.flyersDataError,
-});
+export default Routes;

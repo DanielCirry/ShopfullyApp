@@ -23,10 +23,9 @@ class FlyersPage extends React.Component<IProps, any> {
 
   render() {
     return (
-      <ContainerBox>
-        {console.log("FlyerPAge: " + this.props)}
+      <Container>
         <GridComponent {...this.props} />
-      </ContainerBox>
+      </Container>
     );
   }
 }

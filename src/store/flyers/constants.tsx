@@ -4,4 +4,4 @@ export enum Constants {
   GET_FLYERS_DATA_FAILURE = "GET_FLYERS_DATA",
 }
 
-export const baseUrl = "http://127.0.0.1:8000/api/flyers";
+export const baseUrl = "https://shopfully.herokuapp.com";
