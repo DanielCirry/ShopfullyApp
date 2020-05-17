@@ -34,6 +34,10 @@ export default class Flyer extends React.Component<IProps, IState> {
     visibleFlyers: new Array<IBasicFlyers>(),
   };
 
+  componentDidMount = () => {
+    this.props.getFlyersData();
+  };
+
   componentDidUpdate(prevProps: IProps, prevState: IState) {
     const { flyersData, loading } = this.props;
     const { page, limit } = this.state;

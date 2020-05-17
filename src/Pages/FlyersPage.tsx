@@ -32,6 +32,7 @@ class FlyersPage extends React.Component<IProps, any> {
     );
   }
 }
+
 const mapDispatcherToProps = (dispatch: Dispatch<FlyersActions>) => ({
   getFlyersData: () => asyncActions.getFlyersData(dispatch),
 });
