@@ -17,6 +17,7 @@ interface IProps {
 
 class HomePath extends React.Component<IProps, any> {
   render() {
+    console.log(this.props);
     return <FlyersPage {...this.props} />;
   }
 }
