@@ -8,17 +8,10 @@ import * as asyncActions from "../store/flyers/asyncAction";
 import { IRootState } from "../store";
 import { FlyersActions } from "../store/flyers/types";
 
-interface IProps {
-  flyersData: IGetFlyersResponse | null;
-  loading: boolean;
-  error: IError | null;
-  getFlyersData: () => void;
-}
-
-class HomePath extends React.Component<IProps, any> {
+class HomePath extends React.Component<any, any> {
   render() {
     console.log(this.props);
-    return <FlyersPage {...this.props} />;
+    return <FlyersPage />;
   }
 }
 
@@ -56,12 +49,3 @@ const mapStateToProps = ({ flyers }: IRootState) => ({
   loading: flyers.flyersDataLoading,
   error: flyers.flyersDataError,
 });
-
-const mapDispatcherToProps = (dispatch: Dispatch<FlyersActions>) => ({
-  getFlyersData: () => asyncActions.getFlyersData(dispatch),
-});
-
-type ReduxType = ReturnType<typeof mapStateToProps> &
-  ReturnType<typeof mapDispatcherToProps>;
-
-export default Routes;

@@ -1,17 +1,19 @@
-import React from "react";
+import React, { Dispatch } from "react";
+import { connect } from "react-redux";
 import Grid from "@material-ui/core/Grid";
 import Flyer from "./Flyer";
-import { IGetFlyersResponse } from "../store/flyers/types";
+import {
+  IGetFlyersResponse,
+  IBasicFlyers,
+  FlyersActions,
+} from "../store/flyers/types";
 import { IError } from "../types/general";
+import * as asyncActions from "../store/flyers/asyncAction";
+import { IRootState } from "../store";
 
-interface IProps {
-  flyersData: IGetFlyersResponse | null;
-  loading: boolean;
-  error: IError | null;
-  getFlyersData: () => void;
-}
+type Props = ReduxType;
 
-export default class GridComponent extends React.Component<IProps, any> {
+class GridComponent extends React.Component<Props, any> {
   componentDidMount() {
     this.props.getFlyersData();
   }
@@ -36,3 +38,17 @@ export default class GridComponent extends React.Component<IProps, any> {
     );
   }
 }
+
+const mapStateToProps = ({ flyers }: IRootState) => ({
+  flyersData: flyers.flyersData,
+  loading: flyers.flyersDataLoading,
+  error: flyers.flyersDataError,
+});
+
+const mapDispatcherToProps = (dispatch: Dispatch<FlyersActions>) => ({
+  getFlyersData: () => asyncActions.getFlyersData(dispatch),
+});
+
+type ReduxType = ReturnType<typeof mapStateToProps>;
+
+export default connect(mapStateToProps, mapDispatcherToProps)(GridComponent);

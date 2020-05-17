@@ -2,22 +2,19 @@ import React from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
+import { IRootState } from "../store";
 import * as asyncActions from "../store/flyers/asyncAction";
-import { FlyersActions, IGetFlyersResponse } from "../store/flyers/types";
+import { FlyersActions, IBasicFlyers } from "../store/flyers/types";
 import ContainerBox from "../components/ContainerBox";
 import GridComponent from "../components/GridComponent";
 import { IError } from "../types/general";
 
 interface IProps {
-  flyersData: IGetFlyersResponse | null;
+  flyersData: Array<IBasicFlyers>;
   loading: boolean;
   error: IError | null;
   getFlyersData: () => void;
 }
-
-// interface IState {
-//   modalOpen: boolean;
-// }
 
 class FlyersPage extends React.Component<IProps, any> {
   componentDidMount() {
@@ -27,18 +24,27 @@ class FlyersPage extends React.Component<IProps, any> {
   render() {
     return (
       <ContainerBox>
+        {console.log("FlyerPAge: " + this.props)}
         <GridComponent {...this.props} />
       </ContainerBox>
     );
   }
 }
 
+const mapStateToProps = ({ flyers }: IRootState) => ({
+  flyersData: flyers.flyersData,
+  loading: flyers.flyersDataLoading,
+  error: flyers.flyersDataError,
+});
+
 const mapDispatcherToProps = (dispatch: Dispatch<FlyersActions>) => ({
   getFlyersData: () => asyncActions.getFlyersData(dispatch),
 });
-type ReduxType = ReturnType<typeof mapDispatcherToProps>;
 
-export default connect(null, mapDispatcherToProps)(FlyersPage);
+type ReduxType = ReturnType<typeof mapStateToProps> &
+  ReturnType<typeof mapDispatcherToProps>;
+
+export default connect(mapStateToProps, mapDispatcherToProps)(FlyersPage);
 
 const Container = styled.div`
   box-sizing: border-box;
