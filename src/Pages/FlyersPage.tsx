@@ -23,9 +23,7 @@ class FlyersPage extends React.Component<IProps, any> {
   render() {
     return (
       <ContentContainer>
-        <Container>
-          <GridComponent {...this.props} />
-        </Container>
+        <GridComponent {...this.props} />{" "}
       </ContentContainer>
     );
   }
@@ -46,24 +44,8 @@ type ReduxType = ReturnType<typeof mapStateToProps> &
 
 export default connect(mapStateToProps, mapDispatcherToProps)(FlyersPage);
 
-const Container = styled.div`
-  position: relative;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  flex-grow: 1;
-  align-items: center;
-  flex-direction: column;
-  white-space: pre-wrap;
-  place-content: flex-start;
-  padding-left: 11vh;
-`;
-
 const ContentContainer = styled.div`
   width: 100%;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  border-radius: 4px;
 `;

@@ -1,5 +1,4 @@
 import React from "react";
-import NotFound from "../Pages/NotFoundPage";
 import FlyersPage from "../Pages/FlyersPage";
 
 class HomePath extends React.Component<any, any> {
@@ -11,11 +10,6 @@ class HomePath extends React.Component<any, any> {
 class FavouritesPath extends React.Component<any, any> {
   render() {
     return <h1>Favourites</h1>;
-  }
-}
-class NotFoundPath extends React.Component<any, any> {
-  render() {
-    return <NotFound />;
   }
 }
 

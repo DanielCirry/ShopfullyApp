@@ -42,11 +42,12 @@ const FLyerCard = styled(Card)`
   flex: 1;
   cursor: pointer;
   display: flex;
-  width: 250px;
-  height: 400px;
+  width: 200px;
+  height: 300px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 2px;
 `;
 
 const CardMediaContent = styled(CardMedia)`

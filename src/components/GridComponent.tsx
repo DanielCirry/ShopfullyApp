@@ -22,19 +22,17 @@ class GridComponent extends React.Component<IProps, any> {
   render() {
     const { flyersData } = this.props;
     return (
-      <div>
-        {flyersData ? (
-          <GridContainer container spacing={2} style={{ padding: 2 }}>
+      <>
+        {flyersData && (
+          <GridContainer container spacing={0} style={{ padding: 2 }}>
             {this.props.flyersData.map((flyer) => (
-              <Grid item xs={12} sm={6} lg={3} xl={1}>
+              <Grid item sm>
                 <Flyer {...flyer} />
               </Grid>
             ))}
           </GridContainer>
-        ) : (
-          "No flyers found"
         )}
-      </div>
+      </>
     );
   }
 }
@@ -54,6 +52,6 @@ const GridContainer = styled(Grid)`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  width: 80%;
+  width: 90%;
+  justify-content: space-evenly;
 `;
