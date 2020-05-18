@@ -24,9 +24,9 @@ class GridComponent extends React.Component<IProps, any> {
     return (
       <div>
         {flyersData ? (
-          <GridContainer container spacing={10} style={{ padding: 2 }}>
+          <GridContainer container spacing={2} style={{ padding: 2 }}>
             {this.props.flyersData.map((flyer) => (
-              <Grid item xs={12} sm={8} lg={2} xl={1}>
+              <Grid item xs={12} sm={6} lg={3} xl={1}>
                 <Flyer {...flyer} />
               </Grid>
             ))}
@@ -55,5 +55,5 @@ const GridContainer = styled(Grid)`
   justify-content: center;
   align-items: center;
   height: 100%;
-  width: 100%;
+  width: 80%;
 `;
