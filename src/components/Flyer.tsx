@@ -47,7 +47,7 @@ const FLyerCard = styled(Card)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 2px;
+  margin: 3px;
 `;
 
 const CardMediaContent = styled(CardMedia)`
