@@ -15,7 +15,7 @@ class FavouritesPath extends React.Component<any, any> {
 
 const Routes = [
   {
-    path: "/api/flyers",
+    path: "/flyers",
     sidebarName: "Home",
 
     component: HomePath,
