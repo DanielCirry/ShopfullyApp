@@ -45,8 +45,8 @@ type ReduxType = ReturnType<typeof mapStateToProps> &
 export default connect(mapStateToProps, mapDispatcherToProps)(FlyersPage);
 
 const ContentContainer = styled.div`
-  width: 100%;
+  width: 98%;
   display: flex;
   flex-direction: column;
-  padding: 15px;
+  padding: 2px;
 `;
