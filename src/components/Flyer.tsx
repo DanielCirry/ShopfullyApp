@@ -14,6 +14,7 @@ const Flyer = (props: any) => {
       {props && props.is_published && (
         <FLyerCard>
           <CardMediaContent
+            //website that gives random pictures
             image={`https://picsum.photos/${
               // doing this just to have different sizes pictures
               100 + props.id < 10 ? props.id + 100 : props.id + 0
